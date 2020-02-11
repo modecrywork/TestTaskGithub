@@ -49,9 +49,17 @@
     "prettier": "^1.19.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-hot-loader": "^4.12.19",
     "terser-webpack-plugin": "^2.3.4",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.9.2",
+    "@material-ui/icons": "^4.9.1",
+    "axios": "^0.19.2",
+    "styled-components": "^5.0.1",
+    "with-context": "0.0.3"
   }
 }

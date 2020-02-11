@@ -42,14 +42,17 @@ const baseConfig = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "babel-loader"
+        loader: ["babel-loader"]
       }
     ]
   },
   plugins: [HtmlWebpackPluginConfig, CleanWebpackPluginConfig],
   resolve: {
     alias: {
-      src: path.resolve(__dirname, "src/")
+      containers: path.resolve(__dirname, "src/containers"),
+      services: path.resolve(__dirname, "src/services"),
+      utils: path.resolve(__dirname, "src/services"),
+      constants: path.resolve(__dirname, "src/constants")
     }
   }
 };
