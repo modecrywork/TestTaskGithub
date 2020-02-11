@@ -3,19 +3,18 @@ import styled from "styled-components";
 // Ui
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
 // components
-import SearchComponent from "./SearchComponent";
-import OrderComponent from "./OrderComponent/";
+import { OrderComponent, SearchComponent } from "components";
 // constants
-import { BASE_SORT_MODEL } from "../../constants";
-import { WithMainContainerContext } from "../../context";
+import { BASE_SORT_MODEL } from "../constants";
+import { WithMainContainerContext } from "../context";
 
-const MainPanel = ({ setSort }) => {
+const MainPanel = ({ context: { setSort, setSearch } }) => {
   return (
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6">Test task APP</Typography>
         <PnaelControllers>
-          <SearchComponent />
+          <SearchComponent callback={setSearch} />
           <OrderComponent sortTypes={BASE_SORT_MODEL} callback={setSort} />
         </PnaelControllers>
       </Toolbar>

@@ -50,8 +50,9 @@ const baseConfig = {
   resolve: {
     alias: {
       containers: path.resolve(__dirname, "src/containers"),
+      components: path.resolve(__dirname, "src/components"),
       services: path.resolve(__dirname, "src/services"),
-      utils: path.resolve(__dirname, "src/services"),
+      utils: path.resolve(__dirname, "src/utils"),
       constants: path.resolve(__dirname, "src/constants")
     }
   }

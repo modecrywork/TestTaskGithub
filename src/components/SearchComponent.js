@@ -5,11 +5,16 @@ import { InputBase, IconButton } from "@material-ui/core";
 // icons
 import { Search as SrarchIcon } from "@material-ui/icons";
 
-const SearchComponent = () => {
+const SearchComponent = ({ placeholder, callback }) => {
+  const handleChange = e => {
+    callback && callback(e.target.value);
+  };
+
   return (
     <SrarchWrapper>
       <InputSearch
-        placeholder="Search Google Maps"
+        onChange={handleChange}
+        placeholder={placeholder || "Поиск"}
         inputProps={{ "aria-label": "search google maps" }}
       />
       <SearchButton type="submit">

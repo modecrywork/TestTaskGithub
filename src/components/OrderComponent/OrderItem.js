@@ -5,9 +5,7 @@ import Button from "@material-ui/core/Button";
 // icons
 import { ArrowDownward } from "@material-ui/icons";
 
-const OrderItem = props => {
-  console.log(props);
-  const { label, name, callback } = props;
+const OrderItem = ({ label, name, callback }) => {
   const [direction, setDirection] = useState(0);
 
   const toggleDirection = () => {

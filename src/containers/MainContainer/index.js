@@ -2,10 +2,12 @@ import React, { Component } from "react";
 // styled
 import styled from "styled-components";
 // components
-import MainPanel from "./components/MainPanel/";
+import MainPanel from "./components/MainPanel";
 // constants
 import { BASE_SORT_MODEL } from "./constants";
 import { MainContainerProvider } from "./context";
+// utils
+import { debounce } from "utils";
 
 class MainContainer extends Component {
   state = {
@@ -17,7 +19,7 @@ class MainContainer extends Component {
   setSort = sortType => {
     let newSortingModel = [...this.state.sort];
 
-    newSortingModel = newSort.map(item => {
+    newSortingModel = newSortingModel.map(item => {
       if (item.name === sortType.name) {
         return { ...sortType };
       } else {
@@ -28,13 +30,15 @@ class MainContainer extends Component {
     this.setState({ sort: newSortingModel });
   };
 
+  setSearch = value => debounce(() => this.setState({ search: value }), 400);
+
   render() {
     return (
       <MainContainerProvider
         value={{
           //прокаидываем данные и методы
           data: [...this.state.data],
-          search: this.state.search,
+          setSearch: this.setSearch,
           setSort: this.setSort
         }}
       >
