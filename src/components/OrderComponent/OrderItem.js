@@ -29,7 +29,7 @@ const OrderItem = ({ label, name, callback }) => {
   };
 
   return (
-    <OrderBUtton onClick={toggleDirection} variant="outlined" color="primary">
+    <OrderBUtton onClick={toggleDirection} variant="contained" color="default">
       {label}
       <OrderArrowIcon direction={direction} />
     </OrderBUtton>

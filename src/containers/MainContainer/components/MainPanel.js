@@ -15,7 +15,7 @@ import { WithMainContainerContext } from "../context";
  */
 const MainPanel = ({ context: { setSort, setSearch } }) => {
   return (
-    <AppBar position="static">
+    <AppBar color="default" position="static">
       <Toolbar>
         <Typography variant="h6">Test task APP</Typography>
         <PnaelControllers>
