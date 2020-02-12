@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 // components
 import MainPanel from "./components/MainPanel";
+import Cards from "./components/Cards";
 // constants
 import { BASE_SORT_TYPES_ARRAY } from "./constants";
 import { MainContainerProvider } from "./context";
@@ -55,13 +56,22 @@ class MainContainer extends Component {
         }}
       >
         <MainPanel />
-        <ContainerContent>Content</ContainerContent>
+        <ContainerContent>
+          <Cards />
+        </ContainerContent>
       </MainContainerProvider>
     );
   }
 }
 
 /* Container content styles */
-const ContainerContent = styled.div``;
+const ContainerContent = styled.div`
+  padding-top: 20px;
+  width: 98%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+`;
 
 export default MainContainer;
