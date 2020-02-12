@@ -38,11 +38,14 @@ const OrderItem = ({ label, name, callback }) => {
 
 /* Styles */
 const OrderBUtton = styled(Button)`
+  color: #ffffff;
+  font-size: 12px;
   margin-left: 10px;
+  padding: 4px 6px;
   position: relative;
-  background-color: #ffff;
+  background-color: rgba(255, 255, 255, 0.25);
   &:hover {
-    background-color: #ffff;
+    background-color: rgba(255, 255, 255, 0.45);
   }
 `;
 
@@ -52,8 +55,8 @@ const OrderArrowIcon = styled(ArrowDownward)`
     if (!direction) return "opacity:0;";
     else if (direction == 2) return "transform: rotate(180deg);";
   }}
-  width: 20px;
-  height: 20px;
+  width: 14px;
+  height: 14px;
 `;
 
 OrderItem.propTypes = {

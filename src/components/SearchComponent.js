@@ -33,7 +33,7 @@ const SearchComponent = ({ placeholder, callback }) => {
 const SrarchWrapper = styled.div`
   position: relative;
   height: 35px;
-  width: 250px;
+  width: 300px;
   transition: width 0.6 linear;
 `;
 
