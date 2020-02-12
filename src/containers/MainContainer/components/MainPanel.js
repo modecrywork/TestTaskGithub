@@ -5,9 +5,14 @@ import { AppBar, Toolbar, Typography } from "@material-ui/core";
 // components
 import { OrderComponent, SearchComponent } from "components";
 // constants
-import { BASE_SORT_MODEL } from "../constants";
+import { BASE_SORT_TYPES_ARRAY } from "../constants";
 import { WithMainContainerContext } from "../context";
 
+/**
+ * Верхняя панель включающая сортировку и поиск
+ * @component
+ * @category Containers/MainContainer/components
+ */
 const MainPanel = ({ context: { setSort, setSearch } }) => {
   return (
     <AppBar position="static">
@@ -15,7 +20,7 @@ const MainPanel = ({ context: { setSort, setSearch } }) => {
         <Typography variant="h6">Test task APP</Typography>
         <PnaelControllers>
           <SearchComponent callback={setSearch} />
-          <OrderComponent sortTypes={BASE_SORT_MODEL} callback={setSort} />
+          <OrderComponent sortTypes={BASE_SORT_TYPES_ARRAY} callback={setSort} />
         </PnaelControllers>
       </Toolbar>
     </AppBar>

@@ -1,10 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 // ui
 import { InputBase, IconButton } from "@material-ui/core";
 // icons
 import { Search as SrarchIcon } from "@material-ui/icons";
 
+/**
+ * Компонент панели поиска
+ * @component
+ * @category Components
+ */
 const SearchComponent = ({ placeholder, callback }) => {
   const handleChange = e => {
     callback && callback(e.target.value);
@@ -53,5 +59,16 @@ const SearchButton = styled(IconButton)`
     height: 20px;
   }
 `;
+
+SearchComponent.propTypes = {
+  /**
+   *  Коллюэк на ввод в поле поиска
+   */
+  callback: PropTypes.func,
+  /**
+   * Плейсхолдер перед вводом в поле
+   */
+  placeholder: PropTypes.string
+};
 
 export default SearchComponent;

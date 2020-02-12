@@ -13,6 +13,7 @@ yarn.lock
 
 # Environment
 .env*
+.cache
 
 # Test
 coverage

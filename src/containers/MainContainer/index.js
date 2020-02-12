@@ -1,21 +1,29 @@
 import React, { Component } from "react";
-// styled
 import styled from "styled-components";
 // components
 import MainPanel from "./components/MainPanel";
 // constants
-import { BASE_SORT_MODEL } from "./constants";
+import { BASE_SORT_TYPES_ARRAY } from "./constants";
 import { MainContainerProvider } from "./context";
 // utils
 import { debounce } from "utils";
 
+/**
+ * Базовый контейнер с контентом
+ * @component
+ * @category Containers/MainContainer
+ */
 class MainContainer extends Component {
   state = {
     search: "",
-    sort: [...BASE_SORT_MODEL],
+    sort: [...BASE_SORT_TYPES_ARRAY], // массив моделей для сортировки
     data: []
   };
 
+  /**
+   * Установка сортировки
+   * @param {object} sortType новое состояние инстанса сортировки
+   */
   setSort = sortType => {
     let newSortingModel = [...this.state.sort];
 
@@ -30,13 +38,17 @@ class MainContainer extends Component {
     this.setState({ sort: newSortingModel });
   };
 
+  /**
+   * Обработчик поиска, вызывается по дебаунсу в 400мс
+   * @param {string} value значение требуемуе для установки поиска
+   */
   setSearch = value => debounce(() => this.setState({ search: value }), 400);
 
   render() {
     return (
       <MainContainerProvider
         value={{
-          //прокаидываем данные и методы
+          // прокаидываем данные и методы
           data: [...this.state.data],
           setSearch: this.setSearch,
           setSort: this.setSort
@@ -49,8 +61,7 @@ class MainContainer extends Component {
   }
 }
 
-export default MainContainer;
-
-/* Main view styles */
-
+/* Container content styles */
 const ContainerContent = styled.div``;
+
+export default MainContainer;

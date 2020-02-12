@@ -1,4 +1,4 @@
-export const BASE_SORT_MODEL = [
+export const BASE_SORT_TYPES_ARRAY = [
   {
     label: "Сортировка по дате",
     name: "sort-date",
