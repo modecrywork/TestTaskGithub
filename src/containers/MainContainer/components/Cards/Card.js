@@ -11,6 +11,11 @@ const StyledUiCard = styled(UiCard)`
   margin-bottom: 50px;
   height: 350px;
   width: 500px;
+  background-color: rgb(66, 66, 66, 0.8);
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: rgb(66, 66, 66, 0.9);
+  }
 `;
 
 export default Card;
