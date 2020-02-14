@@ -1,13 +1,33 @@
 import React from "react";
+import PropTypes from 'prop-types'
+import { v1 as uuidv1 } from 'uuid';
 // components
 import Card from "./Card";
+// context
+import { WithMainContainerContext } from "../../context";
 
-const Cards = ({data}) => {
+/**
+ *  Кломпонент рендера карточек  репозиториев
+ * @component
+ * @param data
+ */
+const Cards = ({ data }) => {
+  const RenderedCards =
+    data?.length && data.map(item => <Card {...item} key={uuidv1()} />);
 
-  const renderedCards = data?.length&&data.map(item => <Card {...item} key={item?.name} />)
-
-  return (<><Card /><Card /><Card /><Card /><Card /><Card /><Card /></>);
+  return (
+      <>
+        {RenderedCards || "Ничего не найденно"}
+      </>
+  );
 }
 
 
-export default Cards;
+export default WithMainContainerContext(Cards);
+
+Cards.propTypes = {
+  /**
+   * Массив данных
+   */
+  data: PropTypes.array.isRequired
+}

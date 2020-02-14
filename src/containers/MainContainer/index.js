@@ -4,10 +4,13 @@ import styled from "styled-components";
 import MainPanel from "./components/MainPanel";
 import Cards from "./components/Cards";
 // constants
-import { BASE_SORT_TYPES_ARRAY } from "./constants";
+import { BASE_SORT_TYPES_ARRAY, BASE_FIELDS_DATA } from "./constants";
 import { MainContainerProvider } from "./context";
+import { API_PARTS } from "constants";
+// services
+import { AsyncService } from "services";
 // utils
-import { debounce } from "utils";
+import { debounce, dataConstructor } from "utils";
 
 /**
  * Базовый контейнер с контентом
@@ -18,7 +21,25 @@ class MainContainer extends Component {
   state = {
     search: "",
     sort: [...BASE_SORT_TYPES_ARRAY], // массив моделей для сортировки
+    user: "modecry",
     data: []
+  };
+
+  componentDidMount() {
+    this.getData(); // устанавливаем данные в стейт
+  }
+
+  /**
+   * Метод получения данных по репозиториям
+   * @async
+   * @returns {Promise<void>}
+   */
+  getData = async () => {
+    const { users, repos } = API_PARTS;
+    const { user } = this.state;
+    const { data } = await AsyncService.get(`${users}/${user}${repos}`);
+    data?.length &&
+      this.setState({ data: dataConstructor(data, BASE_FIELDS_DATA) });
   };
 
   /**
@@ -57,7 +78,7 @@ class MainContainer extends Component {
       >
         <MainPanel />
         <ContainerContent>
-          <Cards />
+          <Cards data={this.state.data} />
         </ContainerContent>
       </MainContainerProvider>
     );
