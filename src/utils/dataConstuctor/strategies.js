@@ -1,3 +1,4 @@
+import getRepoMarkdown from "../getRepoMarkdown";
 /**
  *  Дефолтная стратегия для сборки
  * @param {array} fields поля для сборки
@@ -5,8 +6,7 @@
  * @returns {function(*)} - функция сборки
  */
 const defaultStrategy = fields => {
-  return (...args) => {
-    const item = args[0];
+  return (item) => {
     const constructedObject = {};
     fields.forEach(field => {
       constructedObject[field] = item[field];
@@ -15,8 +15,17 @@ const defaultStrategy = fields => {
   };
 }
 
+const getReadmeGithubStrategy =  () => {
+  return item => {
+    getRepoMarkdown(item.full_name).then(data=>{
+      item.markdown = data;
+    })
+    return item;
+  }
+};
 
 /*Экспорт стратегий*/
 export const STRATEGIES_TYPES = {
-  default: defaultStrategy
+  default: defaultStrategy,
+  getReadme: getReadmeGithubStrategy
 }

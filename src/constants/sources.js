@@ -12,5 +12,6 @@ export const BASE_HTTP_CONFIG = {
  */
 export const API_PARTS = {
   users: "/users",
-  repos: "/repos"
+  repos: "/repos",
+  readme: "/readme"
 }

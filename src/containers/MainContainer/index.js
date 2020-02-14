@@ -39,7 +39,7 @@ class MainContainer extends Component {
     const { user } = this.state;
     const { data } = await AsyncService.get(`${users}/${user}${repos}`);
     data?.length &&
-      this.setState({ data: dataConstructor(data, BASE_FIELDS_DATA) });
+      this.setState({ data: dataConstructor(data, BASE_FIELDS_DATA,["default","getReadme"]) });
   };
 
   /**
